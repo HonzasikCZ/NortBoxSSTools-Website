@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORTBOX SS TOOLS</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/mCxS6DWZ/nortbox.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #8A2BE2;
+            --pink: #FF00FF;
+            --deep-purple: #4B0082;
+            --text: #FFFFFF;
+            --card-bg: rgba(30, 30, 30, 0.9);
+            --section-bg: rgba(20, 20, 20, 0.7);
+            --shadow-color: rgba(138, 43, 226, 0.3);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: #FFF;
+            border-radius: 50%;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0;
+            background: linear-gradient(to right, var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+            font-weight: 800;
+            letter-spacing: -1px;
+            padding: 0 1rem;
+        }
+
+        .section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--section-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.1);
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--purple);
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--deep-purple);
+            font-weight: 600;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+
+        .tool-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(138, 43, 226, 0.5));
+        }
+
+        .tool-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+
+        .tool-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .tool-source {
+            font-size: 0.75rem;
+            background: rgba(138, 43, 226, 0.2);
+            padding: 0.25rem 0.6rem;
+            border-radius: 10px;
+            color: var(--pink);
+            border: 1px solid var(--purple);
+            font-weight: 500;
+        }
+
+        .tool-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0.5rem 0;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0.8rem;
+            padding: 0.7rem 1.2rem;
+            background: linear-gradient(135deg, var(--purple), var(--deep-purple));
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .download-btn i {
+            margin-right: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, var(--purple), var(--deep-purple));
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .github-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <header>
+            <h1>NORTBOX SS TOOLS</h1>
+        </header>
+
+        <div class="section">
+            <h2 class="section-title">INCLUDED TOOLS</h2>
+            <div class="tools-grid">
+                <!-- ProcessHacker -->
+                <div class="tool-card">
+                    <i class="fas fa-tasks tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">ProcessHacker</h3>
+                        <span class="tool-source">SourceForge</span>
+                    </div>
+                    <div class="tool-description">Advanced process viewer and system monitor</div>
+                    <button onclick="downloadTool(event, 'https://altushost-swe.dl.sourceforge.net/project/processhacker/processhacker2/processhacker-2.39-bin.zip?viasf=1', 'ProcessHacker.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- System Informer -->
+                <div class="tool-card">
+                    <i class="fas fa-info-circle tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">System Informer</h3>
+                        <span class="tool-source">GitHub</span>
+                    </div>
+                    <div class="tool-description">Newer version of ProcessHacker with enhanced features</div>
+                    <button onclick="downloadTool(event, 'https://github.com/winsiderss/si-builds/releases/download/3.2.25130.426/systeminformer-3.2.25130.426-bin.zip', 'SystemInformer.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- Echo UserAssist -->
+                <div class="tool-card">
+                    <i class="fas fa-user-shield tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">Echo UserAssist</h3>
+                        <span class="tool-source">Echo</span>
+                    </div>
+                    <div class="tool-description">Windows UserAssist registry viewer</div>
+                    <button onclick="downloadTool(event, 'https://dl.echo.ac/tool/userassist', 'EchoUserAssist.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- Echo Journal -->
+                <div class="tool-card">
+                    <i class="fas fa-book tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">Echo Journal</h3>
+                        <span class="tool-source">Echo</span>
+                    </div>
+                    <div class="tool-description">System event journal analyzer</div>
+                    <button onclick="downloadTool(event, 'https://dl.echo.ac/tool/journal', 'EchoJournal.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- LastActivityView -->
+                <div class="tool-card">
+                    <i class="fas fa-history tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">LastActivityView</h3>
+                        <span class="tool-source">NirSoft</span>
+                    </div>
+                    <div class="tool-description">View system/user activities</div>
+                    <button onclick="downloadTool(event, 'https://www.nirsoft.net/utils/lastactivityview.zip', 'LastActivityView.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- Everything -->
+                <div class="tool-card">
+                    <i class="fas fa-search tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">Everything</h3>
+                        <span class="tool-source">VoidTools</span>
+                    </div>
+                    <div class="tool-description">Ultra-fast file search tool</div>
+                    <button onclick="downloadTool(event, 'https://www.voidtools.com/Everything-1.5.0.1391a.x86.zip', 'Everything.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- USBDeview -->
+                <div class="tool-card">
+                    <i class="fas fa-plug tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">USBDeview</h3>
+                        <span class="tool-source">NirSoft</span>
+                    </div>
+                    <div class="tool-description">USB device history viewer</div>
+                    <button onclick="downloadTool(event, 'https://usbdeview.com/wp-content/uploads/2025/02/usbdeview.zip', 'USBDeview.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- WinPrefetchView -->
+                <div class="tool-card">
+                    <i class="fas fa-file-alt tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">WinPrefetchView</h3>
+                        <span class="tool-source">NirSoft</span>
+                    </div>
+                    <div class="tool-description">Prefetch files analyzer</div>
+                    <button onclick="downloadTool(event, 'https://www.nirsoft.net/utils/winprefetchview.zip', 'WinPrefetchView.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- BrowsingHistoryView -->
+                <div class="tool-card">
+                    <i class="fas fa-globe tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">BrowsingHistoryView</h3>
+                        <span class="tool-source">NirSoft</span>
+                    </div>
+                    <div class="tool-description">Browser history analyzer</div>
+                    <button onclick="downloadTool(event, 'https://www.nirsoft.net/utils/browsinghistoryview.zip', 'BrowsingHistoryView.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- VMAware -->
+                <div class="tool-card">
+                    <i class="fas fa-server tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">VMAware</h3>
+                        <span class="tool-source">GitHub</span>
+                    </div>
+                    <div class="tool-description">Virtual machine detection tool</div>
+                    <button onclick="downloadTool(event, 'https://github.com/kernelwernel/VMAware', 'VMAware.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- Luyten -->
+                <div class="tool-card">
+                    <i class="fas fa-file-code tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">Luyten</h3>
+                        <span class="tool-source">GitHub</span>
+                    </div>
+                    <div class="tool-description">Java decompiler tool</div>
+                    <button onclick="downloadTool(event, 'https://github.com/ThexXTURBOXx/Luyten/releases/download/v0.8.2/luyten-0.8.2.exe', 'Luyten.exe')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">OPTIONAL TOOLS</h2>
+            <div class="tools-grid">
+                <!-- Recaf -->
+                <div class="tool-card">
+                    <i class="fas fa-file-code tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">Recaf</h3>
+                        <span class="tool-source">GitHub</span>
+                    </div>
+                    <div class="tool-description">Modern Java decompiler tool</div>
+                    <button onclick="downloadTool(event, 'https://github.com/Col-E/Recaf-Launcher/releases/download/0.8.2/recaf-gui-0.8.2.jar', 'Recaf.jar')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- DiskDigger -->
+                <div class="tool-card">
+                    <i class="fas fa-hdd tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">DiskDigger</h3>
+                        <span class="tool-source">Official DiskDigger</span>
+                    </div>
+                    <div class="tool-description">File recovery tool</div>
+                    <button onclick="downloadTool(event, 'https://diskdigger.org/DiskDigger.exe', 'DiskDigger.exe')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+
+                <!-- Echo USBDeview -->
+                <div class="tool-card">
+                    <i class="fas fa-plug tool-icon" style="font-size: 2.5rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">Echo USBDeview</h3>
+                        <span class="tool-source">Echo</span>
+                    </div>
+                    <div class="tool-description">Enhanced USB device viewer</div>
+                    <button onclick="downloadTool(event, 'https://dl.echo.ac/tool/usb', 'EchoUSBDeview.zip')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <a href="https://github.com/HonzasikCZ/NortBoxSSTools" class="github-link" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+            </a>
+        </footer>
+    </div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 200;
+
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+
+                const duration = Math.random() * 5 + 3;
+                star.style.setProperty('--duration', `${duration}s`);
+
+                star.style.animationDelay = `${Math.random() * 5}s`;
+
+                starsContainer.appendChild(star);
+            }
+        });
+
+        function downloadTool(event, url, filename) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.download = filename;
+            document.body.appendChild(anchor);
+            anchor.click();
+            document.body.removeChild(anchor);
+
+            return false;
+        }
+    </script>
+</body>
+</html>
