@@ -1,6 +1,6 @@
 # NortBoxSSTools Website
 
-## [ What is it for? ]
+## [ WHAT IS IT FOR? ]
 
 This is a simple and trustworthy website built for the NortBoxMC community (nortboxmc.eu).  
 Its purpose is to make it easier and more **trustworthy** to download the **NortBoxSSTools** — a collection of small utility programs mainly used for viewing a player's computer during a screenshare (SS).
