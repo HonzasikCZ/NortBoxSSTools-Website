@@ -29,15 +29,24 @@
             overflow-x: hidden;
         }
 
-        .stars {
+        .cosmic-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+            background: radial-gradient(ellipse at bottom, #0F2027 0%, #000000 100%);
             overflow: hidden;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         .star {
@@ -52,10 +61,22 @@
             50% { opacity: 1; }
         }
 
+        .nebula {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            mix-blend-mode: screen;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
+            position: relative;
+            z-index: 1;
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         header {
@@ -86,6 +107,8 @@
             border: 1px solid rgba(138, 43, 226, 0.3);
             box-shadow: 0 0 30px rgba(138, 43, 226, 0.1);
             position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .section-title {
@@ -217,7 +240,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="stars" id="stars"></div>
+    <div class="cosmic-bg">
+        <div class="stars" id="stars"></div>
+        <div class="nebula" id="nebula1" style="width: 500px; height: 500px; background: radial-gradient(circle, #8A2BE2 0%, transparent 70%); top: 20%; left: 10%;"></div>
+        <div class="nebula" id="nebula2" style="width: 800px; height: 800px; background: radial-gradient(circle, #4B0082 0%, transparent 70%); bottom: 10%; right: 15%;"></div>
+        <div class="nebula" id="nebula3" style="width: 300px; height: 300px; background: radial-gradient(circle, #FF00FF 0%, transparent 70%); top: 40%; right: 20%;"></div>
+    </div>
 
     <div class="container">
         <header>
@@ -424,29 +452,55 @@
     </div>
 
     <script>
-
         document.addEventListener('DOMContentLoaded', function() {
+            // Create stars
             const starsContainer = document.getElementById('stars');
-            const starsCount = 200;
-
+            const starsCount = 300;
+            
             for (let i = 0; i < starsCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
-
+                
                 const size = Math.random() * 2 + 1;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
-
+                
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.top = `${Math.random() * 100}%`;
-
+                
                 const duration = Math.random() * 5 + 3;
                 star.style.setProperty('--duration', `${duration}s`);
-
+                
                 star.style.animationDelay = `${Math.random() * 5}s`;
-
+                
                 starsContainer.appendChild(star);
             }
+            
+            // Animate nebulas
+            const nebula1 = document.getElementById('nebula1');
+            const nebula2 = document.getElementById('nebula2');
+            const nebula3 = document.getElementById('nebula3');
+            
+            function animateNebula(nebula, xRange, yRange, duration) {
+                let x = 0;
+                let y = 0;
+                let xDirection = Math.random() > 0.5 ? 1 : -1;
+                let yDirection = Math.random() > 0.5 ? 1 : -1;
+                
+                setInterval(() => {
+                    x += 0.1 * xDirection;
+                    y += 0.1 * yDirection;
+                    
+                    if (Math.abs(x) > xRange) xDirection *= -1;
+                    if (Math.abs(y) > yRange) yDirection *= -1;
+                    
+                    nebula.style.transform = `translate(${x}px, ${y}px)`;
+                }, duration);
+            }
+            
+            animateNebula(nebula1, 30, 20, 100);
+            animateNebula(nebula2, 50, 30, 150);
+            animateNebula(nebula3, 20, 40, 80);
         });
 
         function downloadTool(event, url, filename) {
