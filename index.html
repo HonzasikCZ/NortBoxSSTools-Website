@@ -439,15 +439,15 @@
                     </button>
                 </div>
                 
-                <!-- BrowsingHistoryView -->
+                <!-- BrowsingDownloadsView -->
                 <div class="tool-card">
                     <i class="fas fa-globe tool-icon" style="font-size: 2.2rem; color: var(--purple);"></i>
                     <div class="tool-title-wrapper">
-                        <h3 class="tool-title">BrowsingHistoryView</h3>
+                        <h3 class="tool-title">BrowsingDownloadsView</h3>
                         <span class="tool-source">NirSoft</span>
                     </div>
-                    <div class="tool-description">Browser history analyzer</div>
-                    <button onclick="downloadTool(event, 'https://www.nirsoft.net/utils/browsinghistoryview.zip', 'BrowsingHistoryView.zip')" class="download-btn">
+                    <div class="tool-description">Browser downloads analyzer</div>
+                    <button onclick="downloadTool(event, 'https://www.nirsoft.net/utils/browserdownloadsview.zip', 'BrowsingDownloadsView.zip')" class="download-btn">
                         <i class="fas fa-download"></i> Download
                     </button>
                 </div>
@@ -474,6 +474,18 @@
                     </div>
                     <div class="tool-description">Java decompiler tool</div>
                     <button onclick="downloadTool(event, 'https://github.com/ThexXTURBOXx/Luyten/releases/download/v0.8.2/luyten-0.8.2.exe', 'Luyten.exe')" class="download-btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+                <!-- InjGen -->
+                <div class="tool-card">
+                    <i class="fas fa-syringe tool-icon" style="font-size: 2.2rem; color: var(--purple);"></i>
+                    <div class="tool-title-wrapper">
+                        <h3 class="tool-title">InjGen</h3>
+                        <span class="tool-source">GitHub</span>
+                    </div>
+                    <div class="tool-description">Cheat client detecting tool</div>
+                    <button onclick="downloadTool(event, 'https://github.com/NotRequiem/InjGen/releases/download/v2.0/InjGen.exe', 'InjGen.exe')" class="download-btn">
                         <i class="fas fa-download"></i> Download
                     </button>
                 </div>
@@ -533,7 +545,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Create stars
             const starsContainer = document.getElementById('stars');
             const starsCount = 300;
             for (let i = 0; i < starsCount; i++) {
@@ -549,8 +560,6 @@
                 star.style.animationDelay = `${Math.random() * 5}s`;
                 starsContainer.appendChild(star);
             }
-
-            // Animate nebulas
             const nebula1 = document.getElementById('nebula1');
             const nebula2 = document.getElementById('nebula2');
             const nebula3 = document.getElementById('nebula3');
