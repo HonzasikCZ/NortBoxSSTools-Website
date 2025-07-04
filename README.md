@@ -9,4 +9,4 @@ The most important tools ([Included Tools](https://github.com/HonzasikCZ/NortixS
 
 You can download only the specific tools you need, directly from a verified source.
 
-![NortixSSTools](https://github.com/user-attachments/assets/6a28a7ae-3ccb-44e5-9feb-de6ec39575fb)
+![NortBoxSSTools](https://github.com/user-attachments/assets/6a28a7ae-3ccb-44e5-9feb-de6ec39575fb)
